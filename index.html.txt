@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="4;url=portal.html" />
+    <title>Payment Success</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #f0f2f5; padding-top: 100px; }
+        .success-card { background: white; padding: 50px; border-radius: 20px; display: inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <h1 style="color: #2ecc71;">Payment Successful!</h1>
+        <p>Transaction ID: <b>TXN_99234102</b></p>
+        <div class="loader"></div>
+        <p>Redirecting to <b>HostelSync Status Portal</b>...</p>
+    </div>
+</body>
+</html>

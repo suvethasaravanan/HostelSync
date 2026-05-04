@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HostelSync | Live Tracker</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #eef2f3; display: flex; justify-content: center; padding-top: 50px; }
+        .tracker { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); width: 100%; max-width: 450px; }
+        .step { display: flex; align-items: center; margin-bottom: 30px; color: #bdc3c7; position: relative; }
+        .step.done { color: #27ae60; }
+        .step.active { color: #2980b9; font-weight: bold; }
+        .circle { width: 30px; height: 30px; border: 2px solid currentColor; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; background: white; z-index: 2; }
+        .line { position: absolute; left: 14px; top: 30px; width: 2px; height: 30px; background: #bdc3c7; z-index: 1; }
+        .done .circle { background: #27ae60; color: white; border: none; }
+        .done .line { background: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="tracker">
+        <h2 style="text-align:center; color:#2c3e50;">HostelSync Status</h2>
+        <p style="text-align:center; color:#7f8c8d; font-size: 14px;">App ID: 2026-MECH-045</p>
+        <hr><br>
+        
+        <div class="step done"><div class="circle">?</div><div class="line"></div>Payment Verified</div>
+        <div class="step active"><div class="circle">?</div><div class="line"></div>Dept Sorting: Mechanical</div>
+        <div class="step"><div class="circle">3</div><div class="line"></div>Warden Approval</div>
+        <div class="step" style="margin-bottom:0;"><div class="circle">4</div>Room Allotted</div>
+        
+        <div style="margin-top:40px; padding:15px; background:#fff3cd; border-radius:8px; font-size:13px;">
+            <b>Notice:</b> A copy of your payment has been sent to the Mechanical Warden office. Please wait for room allotment.
+        </div>
+    </div>
+</body>
+</html>
