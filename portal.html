@@ -2,33 +2,174 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HostelSync | Live Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HostelSync | Live Status Tracker</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #eef2f3; display: flex; justify-content: center; padding-top: 50px; }
-        .tracker { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); width: 100%; max-width: 450px; }
-        .step { display: flex; align-items: center; margin-bottom: 30px; color: #bdc3c7; position: relative; }
-        .step.done { color: #27ae60; }
-        .step.active { color: #2980b9; font-weight: bold; }
-        .circle { width: 30px; height: 30px; border: 2px solid currentColor; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; background: white; z-index: 2; }
-        .line { position: absolute; left: 14px; top: 30px; width: 2px; height: 30px; background: #bdc3c7; z-index: 1; }
-        .done .circle { background: #27ae60; color: white; border: none; }
-        .done .line { background: #27ae60; }
+        :root {
+            --primary: #2980b9;
+            --success: #27ae60;
+            --bg: #f4f7f6;
+            --text: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 { margin: 0; color: var(--primary); }
+        .app-id { font-size: 14px; color: #7f8c8d; }
+
+        /* Tracker Styles */
+        .tracker {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .circle {
+            width: 35px;
+            height: 35px;
+            border: 2px solid #bdc3c7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            margin-right: 15px;
+            z-index: 2;
+            font-weight: bold;
+        }
+
+        .line {
+            position: absolute;
+            left: 17px;
+            top: 35px;
+            width: 2px;
+            height: 25px;
+            background: #bdc3c7;
+            z-index: 1;
+        }
+
+        /* Status Colors */
+        .completed { color: var(--success); }
+        .completed .circle { background: var(--success); color: white; border-color: var(--success); }
+        .completed .line { background: var(--success); }
+
+        .active { color: var(--primary); font-weight: bold; }
+        .active .circle { border-color: var(--primary); color: var(--primary); border-width: 3px; }
+
+        .pending { color: #bdc3c7; }
+
+        /* Form Button */
+        .form-section {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            transition: transform 0.2s, background 0.2s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #21618c;
+            transform: translateY(-2px);
+        }
+
+        .notice {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+
+<div class="container">
+    <header>
+        <h2>HostelSync Status</h2>
+        <p class="app-id">Application ID: 2026-HOSTEL-001</p>
+    </header>
+
     <div class="tracker">
-        <h2 style="text-align:center; color:#2c3e50;">HostelSync Status</h2>
-        <p style="text-align:center; color:#7f8c8d; font-size: 14px;">App ID: 2026-MECH-045</p>
-        <hr><br>
-        
-        <div class="step done"><div class="circle">?</div><div class="line"></div>Payment Verified</div>
-        <div class="step active"><div class="circle">?</div><div class="line"></div>Dept Sorting: Mechanical</div>
-        <div class="step"><div class="circle">3</div><div class="line"></div>Warden Approval</div>
-        <div class="step" style="margin-bottom:0;"><div class="circle">4</div>Room Allotted</div>
-        
-        <div style="margin-top:40px; padding:15px; background:#fff3cd; border-radius:8px; font-size:13px;">
-            <b>Notice:</b> A copy of your payment has been sent to the Mechanical Warden office. Please wait for room allotment.
+        <!-- Step 1 -->
+        <div class="step completed">
+            <div class="circle">✓</div>
+            <div class="line"></div>
+            <span>Payment Verified</span>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step active">
+            <div class="circle">2</div>
+            <div class="line"></div>
+            <span>Dept Sorting: Verification Needed</span>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step pending">
+            <div class="circle">3</div>
+            <div class="line"></div>
+            <span>Warden Approval</span>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step pending">
+            <div class="circle">4</div>
+            <span>Room Allotted</span>
         </div>
     </div>
+
+    <div class="notice">
+        <strong>Important:</strong> To proceed to "Warden Approval," you must upload your payment receipt for ID-Verification.
+    </div>
+
+    <div class="form-section">
+        <p>Ready to verify your receipt?</p>
+        <!-- REPLACE THE LINK BELOW WITH YOUR GOOGLE FORM LINK -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnU77VRQS4GFMF2hQPryWVPZlsFYJ0JQ-LSWo3uJMle846HA/viewform?usp=header" class="btn">
+            Upload Receipt Now
+        </a>
+    </div>
+</div>
+
 </body>
 </html>
